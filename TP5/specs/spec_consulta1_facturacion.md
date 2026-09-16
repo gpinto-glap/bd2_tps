@@ -1,4 +1,3 @@
-```markdown
 # spec: indice_facturacion_categoria_mes
 Objetivo: Optimizar la consulta de facturación agrupada por categoría y mes.
 Consulta afectada: Consulta 1 (JOIN entre pedido, detalle_pedido, producto y categoria).
