@@ -3,3 +3,9 @@
 - **Herramienta:** OpenCode.
 - **Propuesta recibida:** Creación de índices en claves foráneas de `detalle_pedido` y columna de fecha en `pedido`.
 - **Decisión:** Aceptada y aplicada en PostgreSQL.
+
+## Consulta 2 - Top 5 productos más vendidos
+- **Especificación:** Creada en `specs/spec_consulta2_top_productos.md`.
+- **Herramienta:** OpenCode.
+- **Propuesta recibida:** Creación de índice compuesto en las columnas `(producto_id, cantidad)` de la tabla `detalle_pedido`.
+- **Decisión:** Aceptada y aplicada en PostgreSQL.
