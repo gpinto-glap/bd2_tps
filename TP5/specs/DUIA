@@ -9,3 +9,10 @@
 - **Herramienta:** OpenCode.
 - **Propuesta recibida:** Creación de índice compuesto en las columnas `(producto_id, cantidad)` de la tabla `detalle_pedido`.
 - **Decisión:** Aceptada y aplicada en PostgreSQL.
+
+
+## Parte B - Vistas para Reportes del Sistema
+- **Especificación:** Creada en `specs/spec_vistas.md`.
+- **Herramienta:** OpenCode.
+- **Propuesta recibida:** Vistas `vw_productos_vigentes`, `vw_pedidos_usuario` y `vw_detalle_pedido_producto`.
+- **Decisión:** Aceptada y guardada en `views.sql`. Se validó la equivalencia de resultados contra consultas manuales escritas en SQL y se cumplió con el ocultamiento de la columna sensible `usuario.contrasena`.

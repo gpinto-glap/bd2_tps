@@ -170,3 +170,22 @@
 "  Buffers: shared hit=21 read=1 dirtied=2"
 "Planning Time: 1.394 ms"
 "Execution Time: 0.205 ms"
+
+
+
+## Parte B: Verificación de Equivalencia de Vistas
+
+1. **vw_productos_vigentes**
+   - **Vista:** `SELECT * FROM vw_productos_vigentes;`
+   - **Consulta manual:** `SELECT p.id AS producto_id, p.nombre AS producto_nombre, c.nombre AS categoria_nombre FROM producto p JOIN categoria c ON c.id = p.categoria_id;`
+   - **Resultado:** Idéntico (Filas y columnas coinciden al 100%).
+
+2. **vw_pedidos_usuario** (Criterio de Seguridad)
+   - **Vista:** `SELECT * FROM vw_pedidos_usuario;`
+   - **Consulta manual:** `SELECT pe.id AS pedido_id, pe.fecha_hora, u.id AS usuario_id, u.nombre AS usuario_nombre, u.email FROM pedido pe JOIN usuario u ON u.id = pe.usuario_id;`
+   - **Resultado:** Idéntico. Se confirma el ocultamiento explícito de la columna `contrasena` de la tabla `usuario`.
+
+3. **vw_detalle_pedido_producto**
+   - **Vista:** `SELECT * FROM vw_detalle_pedido_producto;`
+   - **Consulta manual:** `SELECT dp.id AS detalle_id, dp.pedido_id, dp.producto_id, p.nombre AS producto_nombre, dp.cantidad, dp.subtotal FROM detalle_pedido dp JOIN producto p ON p.id = dp.producto_id;`
+   - **Resultado:** Idéntico.
