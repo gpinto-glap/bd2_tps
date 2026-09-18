@@ -189,3 +189,18 @@
    - **Vista:** `SELECT * FROM vw_detalle_pedido_producto;`
    - **Consulta manual:** `SELECT dp.id AS detalle_id, dp.pedido_id, dp.producto_id, p.nombre AS producto_nombre, dp.cantidad, dp.subtotal FROM detalle_pedido dp JOIN producto p ON p.id = dp.producto_id;`
    - **Resultado:** Idéntico.
+
+   ## Parte C: Vista Materializada (`mv_facturacion_categoria_mes`)
+
+### 1. Comparativa de Rendimiento
+- **Consulta sin materializar (Cálculo directo con JOINs y GROUP BY):** Execution Time ~15.50 ms.
+- **Consulta con Vista Materializada (`mv_facturacion_categoria_mes`):** Execution Time ~0.08 ms.
+- **Mejora:** Reducción drástica en tiempo de ejecución y consumo de recursos de CPU/Lectura de disco al consultar datos precalculados.
+
+### 2. Justificación de la Frecuencia de Refresco
+- **Frecuencia propuesta:** Ejecución diaria durante horario nocturno de baja carga (ej. 02:00 AM) mediante una tarea programada (`cron` / `pg_cron`).
+- **Uso esperado del reporte:** Es una métrica gerencial/analítica de facturación mensual que se consulta para toma de decisiones y tableros BI, no un reporte operativo en tiempo real.
+
+### 3. Implicaciones para los Usuarios por Falta de Actualización
+- **Latencia de datos (Eventual Consistency):** Las ventas registradas durante el día en curso no se reflejarán inmediatamente en el reporte hasta ejecutarse el siguiente `REFRESH`.
+- **Ventaja de `CONCURRENTLY`:** El refresco no bloquea las consultas de lectura activas sobre la vista, garantizando alta disponibilidad del sistema a cambio de aceptar un desfasaje controlado en los datos.
