@@ -1,19 +1,19 @@
 ## Consulta 1 - Facturación por categoría y mes
 - **Especificación:** Creada en `specs/spec_consulta1_facturacion.md`.
-- **Herramienta:** OpenCode.
+- **Herramienta:** Kiro/OpenCode.
 - **Propuesta recibida:** Creación de índices en claves foráneas de `detalle_pedido` y columna de fecha en `pedido`.
 - **Decisión:** Aceptada y aplicada en PostgreSQL.
 
 ## Consulta 2 - Top 5 productos más vendidos
 - **Especificación:** Creada en `specs/spec_consulta2_top_productos.md`.
-- **Herramienta:** OpenCode.
+- **Herramienta:** Kiro/OpenCode.
 - **Propuesta recibida:** Creación de índice compuesto en las columnas `(producto_id, cantidad)` de la tabla `detalle_pedido`.
 - **Decisión:** Aceptada y aplicada en PostgreSQL.
 
 
 ## Parte B - Vistas para Reportes del Sistema
 - **Especificación:** Creada en `specs/spec_vistas.md`.
-- **Herramienta:** OpenCode.
+- **Herramienta:** Kiro/OpenCode.
 - **Propuesta recibida:** Vistas `vw_productos_vigentes`, `vw_pedidos_usuario` y `vw_detalle_pedido_producto`.
 - **Decisión:** Aceptada y guardada en `views.sql`. Se validó la equivalencia de resultados contra consultas manuales escritas en SQL y se cumplió con el ocultamiento de la columna sensible `usuario.contrasena`.
 
